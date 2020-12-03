@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Dynamic Neural Radiance Fields for Monocular 4D Facial Avatar Reconstruction</title>
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<br/>
+<br/>
+
+<div class="w3-container" id="paper">
+    <div class="w3-content" style="max-width:850px">
+  
+    <h2 align="center" id="title"><b>Dynamic Neural Radiance Fields for Monocular 4D Facial Avatar Reconstruction</b></h2>
+    <br/>
+    <!-- <p align="center" id="title">Conference Name (NAME), YYYY.</p> -->
+
+    <p align="center" class="center_text" id="authors">
+        <a target="_blank" href="http://www.niessnerlab.org/members/guy_gafni/profile.html">Guy Gafni</a><sup>1</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="https://justusthies.github.io/">Justus Thies</a><sup>1</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="https://zollhoefer.com/">Michael Zollh&ouml;fer</a><sup>2</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="https://www.niessnerlab.org/members/matthias_niessner/profile.html">Matthias Nie&szlig;ner</a><sup>1</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+
+    <p class="center_text" align="center">
+        <sup>1</sup>Technical University of Munich
+        &nbsp; &nbsp; &nbsp;
+        <sup>2</sup>Facebook Reality Labs
+    </p>
+
+    <br>
+<!--         <h4 align="center" id="title"><b>Submit to our ScanRefer Localization Benchmark <a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank">here</a>!</b></h4>
+
+        <br><center><a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank"><img src="teaser.png" style="max-width:100%" /></a></center><br> -->
+
+        <h3 class="w3-left-align" id="video"><b>TL;DR</b></h3>
+        <p>
+            Given a video (< 2 min) of a talking person from a fixed camera (e.g., a webcam), we reconstruct a fully riggable avatar of the person, which enables rendering of new videos with explicit control over pose and expression.
+        </p>
+
+
+        
+        <h3 class="w3-left-align" id="video"><b>Introduction</b></h3>
+        <p>
+            We present dynamic neural radiance fields for modeling the appearance and dynamics of a human face.
+            
+            Digitally modeling and reconstructing a talking human is a key building-block for a variety of applications.
+            Especially, for telepresence applications in AR or VR, a faithful reproduction of the appearance including novel viewpoint or head-poses is required.
+            
+            In contrast to state-of-the-art approaches that model the geometry and material properties explicitly, or are purely image-based, we introduce an implicit representation of the head based on scene representation networks.
+            
+            To handle the dynamics of the face, we combine our scene representation network with a low-dimensional morphable model which provides xplicit control over pose and expressions.
+            
+            We use volumetric rendering to generate images from this hybrid representation and demonstrate that such a dynamic neural scene representation can be learned from monocular input data only, without the need of a specialized capture setup.
+            
+            In our experiments, we show that this learned volumetric representation allows for photo-realistic image generation that surpasses the quality of state-of-the-art video-based reenactment methods.
+
+        </p>
+
+        <h3 class="w3-left-align" id="video"><b>Video</b></h3>
+        <p>
+        <!--         <iframe width="850" height="480" src="https://www.youtube.com/embed/T9J5t-UEcNA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         -->        
+            <iframe width="850" height="480" src="vid.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p/>
+
+        <h3 class="w3-left-align" id="video"><b>Applications</b></h3>
+        <p>
+            Our reconstructed 4D avatars enable: Facial reenactment, novel pose synthesis of a talking person, face frontalization 
+        </p>
+
+        <center><a href="http://kaldir.vc.in.tum.de:8080/apps/main" target="__blank"><img src="browser.png" style="max-width:100%" /></a></center><br>
+
+        <h3 class="w3-left-align" id="publication"><b>Publication</b></h3>
+        <!-- European Conference on Computer Vision (ECCV), 2020. <br/> -->
+        <!-- <a href="davezchen_eccv2020_scanrefer.pdf" target="__blank">Paper</a>  -->
+        Paper - <a href="https://arxiv.org/abs/0000.08830" target="__blank">ArXiv - pdf</a> (<a href="https://arxiv.org/abs/0000.08830" target="__blank">abs</a>)  | <a href="https://https://github.com/gafniguy/4D-Facial-Avatars" target="__blank">GitHub</a>
+        <center>
+            <a href="davezchen_eccv2020_scanrefer.pdf" target="__blank"><img src="paper_preview.PNG" style="max-width:80%" /></a>
+        </center><br>
+
+        If you find our work useful, please consider citing us:
+        <pre class="w3-panel w3-leftbar w3-light-grey" style="white-space: pre-wrap; font-family: monospace; font-size: 11px">
+
+        @article{aaa,
+            title={aa,
+            author={aa},
+            journal={aa},
+            year={2020}
+        }
+        </pre>
+
+        <h3 class="w3-left-align" id="dataset"><b>Dataset</b></h3>
+
+        If you would like to access our videos, in order to compare to our method, please contact us directly by email: guy.gafni at tum.de
+    </div>
+
+
+</div>
+
+<br/>
+<br/>
+
+</body>
+</html>
