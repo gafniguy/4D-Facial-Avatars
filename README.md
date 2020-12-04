@@ -13,6 +13,10 @@ here
 ```
 
 
-**Dataset**
+**Dataset and License**
 
 If you want access to our video sequences to run your methods on, don't hesitate to contact us [guy.gafni at tum.de]
+
+The material in this repository is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+
+Code for the webpage is borrowed from the <a href="https://github.com/daveredrum/ScanRefer">ScanRefer project</a>.
