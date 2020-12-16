@@ -4,6 +4,8 @@
 
 <sup>1</sup> Technichal University of Munich, <sup>2</sup>Facebook Reality Labs
 
+![teaser](https://justusthies.github.io/posts/nerface/teaser.jpg)
+
 ArXiv:  <a href="https://arxiv.org/pdf/2012.03065">PDF</a>,  <a href="https://arxiv.org/abs/2012.03065">abs</a>
 
 Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">https://gafniguy.github.io/4D-Facial-Avatars/</a>
