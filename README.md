@@ -1,4 +1,4 @@
-## NerFACE: Dynamic Neural Radiance Fields for Monocular 4D Facial Avatar Reconstruction
+## NerFACE: Dynamic Neural Radiance Fields for Monocular 4D Facial Avatar Reconstruction [CVPR 2021 Oral Presentation]
 
 *Guy Gafni<sup>1</sup>, Justus Thies<sup>1</sup>, Michael Zollhöfer<sup>2</sup>, Matthias Nießner<sup>1</sup>*
 
