@@ -27,6 +27,8 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 
 **Dataset and License**
 
+UPDATE: Dataset sample <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">availble</a>.
+
 If you want access to our video sequences to run your methods on, don't hesitate to contact us [guy.gafni at tum.de]
 
 The material in this repository is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
