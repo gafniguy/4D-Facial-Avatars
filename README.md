@@ -16,7 +16,7 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 
 ```
 @InProceedings{Gafni_2021_CVPR,
-    author    = {Gafni, Guy and Thies, Justus and Zoll{\"o}fer, Michael and Nie{\ss}ner, Matthias},
+    author    = {Gafni, Guy and Thies, Justus and Zollh{\"o}fer, Michael and Nie{\ss}ner, Matthias},
     title     = {Dynamic Neural Radiance Fields for Monocular 4D Facial Avatar Reconstruction},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
