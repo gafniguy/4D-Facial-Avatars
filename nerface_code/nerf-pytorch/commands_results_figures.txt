@@ -1,0 +1,4 @@
+commands result figures
+
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_result_fig.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/ji_result_fig
+python eval_transformed_rays.py --config ./config/hao/hao_lcode_fixed_bg_paper_model_512_results_fig.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/hao_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/hao_results_fig

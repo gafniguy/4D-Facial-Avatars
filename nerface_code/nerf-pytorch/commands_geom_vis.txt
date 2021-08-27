@@ -1,0 +1,35 @@
+commands play with blendshapes
+
+python eval_transformed_rays.py --config ./config/justus/justus_lcode_fixed_bg_paper_model_xyz.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/justus/justus_lcode_fixed_bg_paper_model/checkpoin305000.ckpt --savedir ./renders/final/justus_blendshapes
+
+--config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_teaser.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/blendshape68
+
+pose = render_poses[10]
+ray_origins, ray_directions = get_ray_bundle(hwf[0], hwf[1], hwf[2], pose)
+expression_copy = torch.clone(render_expressions[0])
+a = expression_copy.cpu().numpy()
+#expression_copy[68]=-0.3
+rgb_coarse, disp_coarse, _, rgb_fine, disp_fine, _, weights = run_one_iter_of_nerf(
+                hwf[0],
+                hwf[1],
+                hwf[2],
+                model_coarse,
+                model_fine,
+                ray_origins,
+                ray_directions,
+                cfg,
+                mode="validation",
+                encode_position_fn=encode_position_fn,
+                encode_direction_fn=encode_direction_fn,
+                expressions = expression_copy,
+                background_prior = background.view(-1,3) if (background is not None) else None,
+                #background_prior = torch.ones_like(background).view(-1,3),  # White background
+                latent_code = latent_code
+            )
+import matplotlib.pyplot as plt
+plt.imshow(rgb_fine.cpu().numpy())
+plt.show()
+
+normals = normal_map_from_depth_map_backproject(disp_fine.cpu().numpy())
+save_plt_image(normals, './renders/final/visualize_geometry_justus_neutral/normals.jpg')
+save_plt_image(rgb_fine, './renders/final/visualize_geometry_justus_neutral/rgb.jpg')

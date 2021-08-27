@@ -1,0 +1,60 @@
+
+
+
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar_dvp/test/f_%04d.png  -i ./renders/final/norman_driven_by_yawar/%04d.png -i ./renders/final/norman_driven_by_yawar/normals/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/norman_driven_by_yawar/norman_driven_by_yawar.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar_dvp/test/f_%04d.png -framerate 50 -i ./renders/final/norman_driven_by_yawar_delta/%04d.png -framerate 50 -i ./renders/final/norman_driven_by_yawar_delta/normals/%04d.png  -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[2:v]scale=512:512[v2];[v0][v1][v2]hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/norman_driven_by_yawar_delta/norman_driven_by_yawar_delta.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar2/images/%05d.png -framerate 50 -i ./renders/final/videos/norman_driven_by_yawar_delta_4000/%04d.png  -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[v0][v1]hstack=inputs=2" -frames:v 4000 -r 50 -pix_fmt yuv420p ./renders/final/videos/norman_driven_by_yawar_delta_4000/norman_driven_by_yawar_delta_4000.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave/images/%05d.png -framerate 50 -i ./renders/final/videos/ji_driven_by_dave_delta_4000/%04d.png  -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[v0][v1]hstack=inputs=2" -frames:v 4000 -r 50 -pix_fmt yuv420p ./renders/final/videos/ji_driven_by_dave_delta_4000/ji_driven_by_dave_delta_4000.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar_dvp/test/f_%04d.png -framerate 50 -i ./renders/final/videos/dave_driven_by_yawar_delta/%04d.png -framerate 50 -i ./renders/final/videos/dave_driven_by_yawar_delta/normals/%04d.png  -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[2:v]scale=512:512[v2];[v0][v1][v2]hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/videos/dave_driven_by_yawar_delta/dave_driven_by_yawar_delta.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/manuel/images/%05d.png  -framerate 50 -i ./renders/final/videos/norman_driven_by_manuel_delta/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=2" -frames:v 4000 -r 50 -pix_fmt yuv420p ./renders/final/videos/norman_driven_by_manuel_delta.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/norman_dvp/test/f_%04d.png  -framerate 50 -i ./renders/final/dave_driven_by_norman/%04d.png  -framerate 50 -i ./renders/final/dave_driven_by_norman/normals/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/dave_driven_by_norman/dave_driven_by_norman.mp4
+ffmpeg -framerate 50 -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar2/images/%05d.png  -framerate 50 -i ./renders/final/videos/dave_driven_by_yawar_delta_6000/%04d.png   -filter_complex "[0:v]scale=512:512,hstack=inputs=2" -frames:v 5000 -r 50 -pix_fmt yuv420p ./renders/final/dave_driven_by_yawar_delta_6000.mp4
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/norman_dvp/test/f_%04d.png  -i ./renders/final/dave_driven_by_norman/%04d.png -i ./renders/final/dave_driven_by_norman/normals/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/dave_driven_by_norman/dave_driven_by_norman.mp4
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/f_%04d.png  -i ./renders/final/dave_driven_by_ji/%04d.png -i ./renders/final/dave_driven_by_ji/normals/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/dave_driven_by_ji/dave_driven_by_ji.mp4
+ffmpeg -i /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/f_%04d.png  -i ./renders/final/andrei_driven_by_manuel/%04d.png -i ./renders/final/andrei_driven_by_manuel/normals/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=3" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/andrei_driven_by_manuel/andrei_driven_by_manuel.mp4
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/guy7/images/%05d.png  -i ./renders/final/justus_driven_by_guy/%04d.png -i ./renders/final/justus_driven_by_guy/normals/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=3" -frames:v 1500 -r 50 -pix_fmt yuv420p ./renders/final/justus_driven_by_guy/justus_driven_by_guy.mp4
+
+
+
+ffmprg 
+
+
+
+4 videos hstack
+
+ffmpeg -framerate 50  -i /rhome/guygafni/projects/first-order-model/andrei/%04d.png  -framerate 50 -i ./renders/final/dvp/andrei/images/img.png -framerate 50  -i ./renders/final/andrei_ours_v2/img%09d-outputs.png  -framerate 50 -i ./real_data/andrei_dvp/test/f_%04d.png  "[0:v]scale=512:512,hstack=inputs=4"  -r 50 ./renders/final/comparison_vids/andrei.mp4
+ 
+ 
+ffmpeg -framerate 50  -i /rhome/guygafni/projects/first-order-model/andrei/%04d.png  -framerate 50  -pattern_type glob -i './renders/final/dvp/andrei/images/*.png' -framerate 50  -i ./renders/final/andrei_ours_v2/%04d.png  -framerate 50  -i ./real_data/andrei_dvp/test/f_%04d.png -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[2:v]scale=512:512[v2];[3:v]scale=512:512[v3]; [v0][v1][v2][v3]hstack=inputs=4" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/andrei_compare.mp4
+ffmpeg -framerate 50  -i /rhome/guygafni/projects/first-order-model/ji/%04d.png -pattern_type glob  -framerate 50 -i './renders/final/dvp/ji/images/*.png'  -framerate 50  -i ./renders/final/ji_ours/%04d.png  -framerate 50  -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/f_%04d.png -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[2:v]scale=512:512[v2];[3:v]scale=512:512[v3]; [v0][v1][v2][v3]hstack=inputs=4" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/ji_compare.mp4
+ffmpeg -framerate 50  -i /rhome/guygafni/projects/first-order-model/norman/%04d.png -pattern_type glob  -framerate 50 -i './renders/final/dvp/norman/images/*.png'  -framerate 50 -i ./renders/final/norman_ours/%04d.png  -framerate 50  -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/norman_dvp/test/f_%04d.png -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[2:v]scale=512:512[v2];[3:v]scale=512:512[v3]; [v0][v1][v2][v3]hstack=inputs=4" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/norman_compare.mp4
+ffmpeg  -framerate 50 -i /rhome/guygafni/projects/first-order-model/dave/%04d.png -pattern_type glob -framerate 50  -i './renders/final/dvp/dave/images/*.png' -framerate 50 -i ./renders/final/dave_ours/%04d.png  -framerate 50  -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/f_%04d.png -filter_complex "[0:v]scale=512:512[v0];[1:v]scale=512:512[v1];[2:v]scale=512:512[v2];[3:v]scale=512:512[v3]; [v0][v1][v2][v3]hstack=inputs=4" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/dave_compare.mp4
+
+
+ablation
+
+ffmpeg -framerate 50 -i ./renders/final/andrei_nerf/%04d.png -pix_fmt  yuv420p -r 50  ./renders/final/ablation_vids/andrei_nerf.mp4
+ffmpeg  -framerate 50  -i ./renders/final/andrei_no_dynamics/%04d.png  -pix_fmt yuv420p  -r 50 ./renders/final/ablation_vids/andrei_no_dynamics.mp4
+ffmpeg  -framerate 50 -i ./renders/final/andrei_no_expr/%04d.png  -pix_fmt yuv420p ./renders/final/ablation_vids/andrei_no_expressions.mp4
+ffmpeg  -framerate 50  -i ./renders/final/andrei_no_bg/%04d.png  -pix_fmt yuv420p -r 50 ./renders/final/ablation_vids/andrei_no_lcode.mp4
+ffmpeg  -framerate 25  -i ./renders/final/videos/andrei_wrinkles_zoom/%04d.png  -pix_fmt yuv420p -r 50 ./renders/final/videos/andrei_wrinkles/andrei_wrinkles_zoom.mp4;
+ffmpeg  -framerate 25  -i ./renders/final/videos/andrei_wrinkles_zoom/normals/%04d.png  -pix_fmt yuv420p -r 25 ./renders/final/videos/andrei_wrinkles_zoom/andrei_wrinkles_zoom_normals.mp4
+ffmpeg  -framerate 50  -i ./renders/final/andrei_no_bg/%04d.png  -pix_fmt yuv420p -r 50 ./renders/final/ablation_vids/andrei_no_lcode.mp4
+
+
+
+ffmpeg -i ./renders/final/videos/dave_geom/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_geom/vid.mp4
+ffmpeg -i ./renders/final/videos/dave_geom/normals/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_geom/normals/vid.mp4
+ffmpeg -i ./renders/final/videos/dave_expr_xyz/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_expr_xyz/dave_expr_xyz.mp4; ffmpeg -i ./renders/final/videos/dave_expr_xyz/normals/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_expr_xyz/dave_expr_xyz_normals.mp4
+ffmpeg -i ./renders/final/videos/dave_xyz_expr/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_xyz_expr/vid.mp4
+ffmpeg -i ./renders/final/videos/norman_neutral_xyz/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/norman_neutral_xyz/norman_neutral_xyz.mp4
+ffmpeg -i ./renders/final/videos/norman_dynamic_xyz/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/norman_dynamic_xyz/norman_dynamic_xyz.mp4
+ffmpeg -i ./renders/final/videos/norman_smile_xyz/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/norman_smile_xyz/norman_smile_xyz.mp4
+ffmpeg -i ./renders/final/videos/norman_just_expr/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/norman_just_expr/norman_just_expr.mp4
+ffmpeg -i ./renders/final/videos/dave_driven_by_yawar_delta/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_driven_by_yawar_delta/dave_driven_by_yawar_delta.mp4
+ffmpeg -framerate 50 -i ./renders/final/andrei_no_dynamics/%04d.png -r 50  -pix_fmt yuv420p ./renders/final/andrei_no_dynamics/andrei_no_dynamics.mp4
+ffmpeg -framerate 50 -i ./renders/final/andrei_no_lcode/%04d.png -r 50  -pix_fmt yuv420p ./renders/final/andrei_no_lcode/andrei_no_lcode.mp4
+ffmpeg -i ./renders/final/videos/dave_xyz_expr/normals/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/videos/dave_xyz_expr/normals.mp4
+ffmpeg  -pattern_type glob -i '/rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/debug_vis/*.png' -pix_fmt yuv420p /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/debug_vis/vid.mp4
+ffmpeg  -pattern_type glob -i '/rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/vis_tracking/*.png' -pix_fmt yuv420p /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/vis_tracking/vid.mp4
+

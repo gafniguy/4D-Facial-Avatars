@@ -1,0 +1,9 @@
+================================================================================
+ Summary 
+ folder 1: /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/ 
+ folder 2: ./renders/final/dave_ours 
+--------------------------------------------------------------------------------
+ mean L1:	0.000000
+ mean PSNR:	0.000000
+ mean SSIM:	0.000000
+ mean LPIPS	0.000000

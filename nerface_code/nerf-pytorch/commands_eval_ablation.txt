@@ -1,0 +1,123 @@
+## Eval dump rays
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_256_paper_model.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_256_paper_model/checkpoint400000.ckpt --savedir ./renders/final/rays
+
+## Eval Ours
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/andrei_mask
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_expr.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_ours
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/ji_ours
+
+
+## Eval No BG
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_bg.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_bg/checkpoint400000.ckpt --savedir ./renders/final/andrei_no_bg
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_bg.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_no_bg/checkpoint400000.ckpt --savedir ./renders/final/dave_no_bg
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_bg.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/ji_lcode_fixed_bg_paper_model_512_no_bg/checkpoint400000.ckpt --savedir ./renders/final/ji_no_bg
+
+
+## Eval No Expr
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_expr.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_expr/checkpoint400000.ckpt --savedir ./renders/final/andrei_no_expr
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_expr.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_no_expr/checkpoint400000.ckpt --savedir ./renders/final/dave_ours_no_expr
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_expr.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/ji_lcode_fixed_bg_paper_model_512_no_expr/checkpoint400000.ckpt --savedir ./renders/final/ji_no_expr
+
+
+## Eval noLcode
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_lcode.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_lcode/checkpoint400000.ckpt --savedir ./renders/final/andrei_no_lcode
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_lcode.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_no_lcode/checkpoint400000.ckpt --savedir ./renders/final/dave_no_lcode
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_lcode.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/ji_lcode_fixed_bg_paper_model_512_no_lcode/checkpoint400000.ckpt --savedir ./renders/final/ji_no_lcode
+
+## Eval noLcode
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_dynamics.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_dynamics/checkpoint400000.ckpt --savedir ./renders/final/andrei_no_dynamics
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_dynamics.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_no_dynamics/checkpoint400000.ckpt --savedir ./renders/final/dave_no_dynamics
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_dynamics.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/ji_lcode_fixed_bg_paper_model_512_no_dynamics/checkpoint400000.ckpt --savedir ./renders/final/ji_no_dynamics
+
+
+
+## Eval NeRF
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_nerf.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_nerf/checkpoint400000.ckpt --savedir ./renders/final/andrei_nerf
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_nerf.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_nerf/checkpoint400000.ckpt --savedir ./renders/final/dave_nerf
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_nerf.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/ji_lcode_fixed_bg_paper_model_512_nerf/checkpoint400000.ckpt --savedir ./renders/final/ji_nerf
+
+## Eval Half data
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_half_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_half_data/checkpoint400000.ckpt --savedir ./renders/final/andrei_half_data_400
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_half_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_half_data/checkpoint400000.ckpt --savedir ./renders/final/dave_half_data_400
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_half_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_half_data/checkpoint400000.ckpt --savedir ./renders/final/ji_half_data_400
+
+## Eval Quarter data
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_quarter_data/checkpoint400000.ckpt --savedir ./renders/final/andrei_quarter_data_400
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_quarter_data/checkpoint400000.ckpt --savedir ./renders/final/dave_quarter_data_400
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data/checkpoint400000.ckpt --savedir ./renders/final/ji_quarter_data_400
+
+## Eval Half data half iter
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_half_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_half_data/checkpoint200000.ckpt --savedir ./renders/final/andrei_half_data_200
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_half_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_half_data/checkpoint200000.ckpt --savedir ./renders/final/dave_half_data_200
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_half_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_half_data/checkpoint200000.ckpt --savedir ./renders/final/ji_half_data_200
+
+## Eval Quarter data quarter iter
+
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_quarter_data/checkpoint100000.ckpt --savedir ./renders/final/andrei_quarter_data_100
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_quarter_data/checkpoint100000.ckpt --savedir ./renders/final/dave_quarter_data_100
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data/checkpoint100000.ckpt --savedir ./renders/final/ji_quarter_data_100
+
+
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data/checkpoint400000.ckpt --savedir ./renders/final/ji_quarter_data_400; python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data/checkpoint100000.ckpt --savedir ./renders/final/ji_quarter_data_100
+
+
+
+
+########## metrics ################
+
+# FOMM
+python nerf/metrics.py --images_path /rhome/guygafni/projects/first-order-model/dave --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/
+python nerf/metrics.py --images_path /rhome/guygafni/projects/first-order-model/andrei --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/
+python nerf/metrics.py --images_path /rhome/guygafni/projects/first-order-model/ji --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+# DVP
+python nerf/metrics.py --images_path ./renders/final/dvp/dave/images --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/; python nerf/metrics.py --images_path ./renders/final/dvp/andrei/images --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/;
+python nerf/metrics.py --images_path ./renders/final/dvp/ji/images --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/;
+
+
+## Ours full
+--images_path ../renders/final/dave_ours --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/
+--images_path ../renders/final/andrei_ours --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/
+python nerf/metrics.py --images_path ./renders/final/andrei_ours_v2 --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/
+--images_path ../renders/final/ji_ours --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+
+
+
+## No BG
+python nerf/metrics.py --images_path ./renders/final/dave_no_bg --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/; python nerf/metrics.py --images_path ./renders/final/andrei_no_bg --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/; python nerf/metrics.py --images_path ./renders/final/ji_no_bg --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+
+## No Expr
+python nerf/metrics.py --images_path ./renders/final/dave_no_expr --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/; python nerf/metrics.py --images_path ./renders/final/andrei_no_expr --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/; python nerf/metrics.py --images_path ./renders/final/ji_no_expr --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+
+## No Lcode
+python nerf/metrics.py --images_path ./renders/final/dave_no_lcode --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/; python nerf/metrics.py --images_path ./renders/final/andrei_no_lcode --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/ ;python nerf/metrics.py --images_path ./renders/final/ji_no_lcode --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+
+## Nerf
+python nerf/metrics.py --images_path ./renders/final/dave_nerf --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/; python nerf/metrics.py --images_path ./renders/final/andrei_nerf --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/;
+python nerf/metrics.py --images_path ./renders/final/ji_nerf --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+
+## No dynamics
+python nerf/metrics.py --images_path ./renders/final/dave_no_dynamics --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/;  python nerf/metrics.py --images_path ./renders/final/andrei_no_dynamics --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/ ;  python nerf/metrics.py --images_path ./renders/final/ji_no_dynamics --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/
+
+
+## Half Data (400k)
+python nerf/metrics.py --images_path ./renders/final/dave_half_data_400 --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/;  python nerf/metrics.py --images_path ./renders/final/andrei_half_data_400 --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/; python nerf/metrics.py --images_path ./renders/final/ji_half_data_400 --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/;
+
+## Quarter Data (400k)
+python nerf/metrics.py --images_path ./renders/final/dave_quarter_data_400 --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/;  python nerf/metrics.py --images_path ./renders/final/andrei_quarter_data_400 --gt_path /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/; python nerf/metrics.py --images_path ./renders/final/ji_quarter_data_400 --gt_path /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test/;
+
+

@@ -1,0 +1,111 @@
+ ffmpeg -i input_video.mp4 -filter:v "crop=in_h:in_h","scale=512:-1" -c:a copy -frames:v 5318 -an ./andrei_3_train.mp4
+ffmpeg -i  input_video.mp4 -ss 106.36 -filter:v "crop=in_h:in_h","scale=512:-1" -c:a copy -an ./andrei_3_test.mp4
+
+ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 input_video.mp4
+6513 6579
+ffmpeg -i input_video.mp4 -filter:v "crop=in_h:in_h","scale=512:-1" -c:a copy -frames:v 5513 -an ./dave_dvp_train.mp4
+ffmpeg -i  input_video.mp4 -ss 110.26 -filter:v "crop=in_h:in_h","scale=512:-1" -c:a copy -an ./dave_dvp_test.mp4
+
+ji
+6441
+ffmpeg -i input_video.mp4 -filter:v "crop=in_h:in_h","scale=512:-1" -c:a copy -frames:v 5441 -an ./ji_dvp_train.mp4
+ffmpeg -i  input_video.mp4 -ss 108.82 -filter:v "crop=in_h:in_h","scale=512:-1" -c:a copy -an ./ji_dvp_test.mp4
+ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 ji_dvp_test.mp4
+
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_nolcode_fixed_bg_256_compressed.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_256_paper_model.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model.yml 
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_256_paper_model.yml 
+python train_transformed_rays.py --config ./config/dave/dave_dvp_nolcode_fixed_bg_256_compressed.yml 
+
+_____________________________________
+
+python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/norman --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/norman_dvp; python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar2 --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar_dvp
+python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp
+python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/guy7 --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/guy7
+python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/manuel --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/manuel_dvp
+
+
+mkdir /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/hao_dvp; cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/hao/bg /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/hao_dvp; 
+mkdir /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/guy6_dvp; cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/guy_6/bg /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/guy6_dvp; 
+
+python real_to_nerf.py --source /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/hao/ --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/hao_dvp
+python real_to_nerf.py --source /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/guy_6_oldtracking/ --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/guy6_dvp
+
+
+
+______________________
+
+_______________F
+Final training commands friday night
+
+
+python train_transformed_rays.py --config ./config/yawar2/yawar2_lcode_fixed_bg_paper_model.yml 
+python train_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512.yml 
+python train_transformed_rays.py --config ./config/guy7/guy7_lcode_fixed_bg_paper_model_512.yml 
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512.yml 
+
+
+python train_transformed_rays.py --config ./config/hao/hao_lcode_fixed_bg_paper_model_512.yml 
+python train_transformed_rays.py --config ./config/guy6/guy6_lcode_fixed_bg_paper_model_512.yml 
+
+
+python real_to_nerf.py --source /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/hao --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/hao_dvp; cd yawar2;
+python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_half_data --LESS_DATA 0.5; python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_quarter_data --LESS_DATA 0.25; 
+python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_half_data --LESS_DATA 0.5; python real_to_nerf.py --source /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji --target /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_quarter_data --LESS_DATA 0.25;
+python real_to_nerf.py --source /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_2 --target /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_half_data --LESS_DATA 0.5; python real_to_nerf.py --source /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_2 --target /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_quarter_data --LESS_DATA 0.25; 
+
+______________________
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint365000.ckpt --savedir ./renders/andrei_2_512_dvp_256px_365k
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_256_paper_model.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_256_paper_model/checkpoint580000.ckpt --savedir ./renders/dave_dvp_256_580k
+python eval_transformed_rays.py --config ./config/yawar2/yawar2_lcode_fixed_bg_paper_model.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/yawar2_lcode_fixed_bg_paper_model/checkpoint300000.ckpt --savedir ./renders/yawar_300k
+python eval_transformed_rays.py --config ./config/guy6/guy6_lcode_fixed_bg_paper_model_512.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/guy6_lcode_fixed_bg_paper_model_512/checkpoint4000000.ckpt --savedir ./renders/guy6_305k
+python eval_transformed_rays.py --config ./config/guy7/guy7_lcode_fixed_bg_paper_model_512.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/guy7_lcode_fixed_bg_paper_model_512/checkpoint335000.ckpt --savedir ./renders/guy7_256px_335k
+python eval_transformed_rays.py --config ./config/hao/hao_lcode_fixed_bg_paper_model_512.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/hao_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/hao_ours
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/norman_ours
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_teaser.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/norman_teaser
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_teaser.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/for_video_dave_geom
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_teaser.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/blendshape68
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_teaser.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_results_figure
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_driven_by_norman
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_driven_by_andrei
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_driven_by_ji
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_driven_by_ji
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/videos/dave_driven_by_yawar_delta
+python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_vid.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/videos/dave_geom
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/andrei_ours_frontalize
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/andrei_driven_by_manuel
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/videos/andrei_wrinkles
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_ji_driving.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/ji_drives_norman
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/norman_driven_by_yawar
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/norman_driven_by_yawar_delta
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/norman_neutral_xyz
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/videos/norman_dynamic_xyz
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/videos/norman_smile_xyz
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/videos/norman_just_expr
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/videos/norman_driven_by_yawar_delta_4000
+python eval_transformed_rays.py --config ./config/norman/norman_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/norman_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/videos/norman_driven_by_manuel_delta
+python eval_transformed_rays.py --config ./config/hao/hao_lcode_fixed_bg_paper_model_512_dave_driving.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/hao_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/dave_drive_hao
+python eval_transformed_rays.py --config ./config/hao/hao_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/hao_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/andrei
+python eval_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_dave_driving.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint400000.ckpt --savedir ./renders/final/dave_drive_andrei
+python eval_transformed_rays.py --config ./config/justus/justus_lcode_fixed_bg_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/justus/justus_lcode_fixed_bg_paper_model/checkpoint305000.ckpt --savedir ./renders/final/justus_driven_by_guy
+python eval_transformed_rays.py --config ./config/justus/justus_lcode_fixed_bg_paper_model_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/justus/justus_lcode_fixed_bg_paper_model/checkpoint305000.ckpt --savedir ./renders/final/justus_driven_by_manuel
+python eval_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_driven.yml --checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512/checkpoint400000.ckpt --savedir ./renders/final/videos/ji_driven_by_dave_delta_4000
+
+
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/yawar_dvp/test/f_%04d.png  -i ./renders/yawar_300k/%04d.png -filter_complex "[0:v]scale=256:256,hstack=inputs=2" -frames:v 1000 -r 50 ./renders/yawar_300k/yawar_300k_compare.mp4
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test/f_%04d.png  -i ./renders/dave_dvp_256_580k/%04d.png -filter_complex "[0:v]scale=256:256,hstack=inputs=2" -frames:v 1000 -r 50 ./renders/dave_dvp_256_580k/dave_dvp_256_580k.mp4
+ffmpeg -i /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/f_%04d.png  -i ./renders/andrei_2_512_dvp_256px_365k/%04d.png -filter_complex "[0:v]scale=256:256,hstack=inputs=2" -frames:v 1000 -r 50 ./renders/andrei_2_512_dvp_256px_365k/andrei_2_512_dvp_256px_365k.mp4
+ffmpeg -i /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/norman_dvp/test/f_%04d.png  -i ./renders/norman_256px_310k/%04d.png -filter_complex "[0:v]scale=256:256,hstack=inputs=2" -frames:v 1000 -r 50 ./renders/norman_256px_310k/norman_256px_310k.mp4
+ffmpeg -i ./renders/final/dave_xyz_256/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/dave_xyz_256/vid.mp4
+ffmpeg -i ./renders/final/dave_xyz_256/%04d.png -r 25  -pix_fmt yuv420p ./renders/final/dave_xyz_256/vid.mp4
+
+ffmpeg -i /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test/f_%04d.png -i ./renders/final/andrei_ours_frontalize/%04d.png  -filter_complex "[0:v]scale=512:512,hstack=inputs=2" -frames:v 1000 -r 50 -pix_fmt yuv420p ./renders/final/andrei_ours_frontalize/andrei_frontalize.mp4
+
+_______________
+cut CVP video in half
+
+ffmpeg -i C:\Projects\cnerf\DVP\Andrei.avi -filter:v "crop=256:256:256:0" -c:a copy C:\Projects\cnerf\DVP\andrei\%04d.png
+ffmpeg -i C:\Projects\cnerf\DVP\ji.avi -filter:v "crop=256:256:256:0" -c:a copy C:\Projects\cnerf\DVP\ji\%04d.png
+ffmpeg -i C:\Projects\cnerf\DVP\dave.avi -filter:v "crop=256:256:256:0" -c:a copy C:\Projects\cnerf\DVP\dave\%04d.png

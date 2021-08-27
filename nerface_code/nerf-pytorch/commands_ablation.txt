@@ -1,0 +1,111 @@
+### No dynamics
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_dynamics.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_dynamics.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_dynamics.yml 
+
+
+### Latent Code regularization
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_regularize_lcode.yml --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint300000.ckpt 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_regularize_lcode.yml  --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint300000.ckpt
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_regularize_lcode.yml  --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512/checkpoint300000.ckpt
+
+### Latent Code regularization 100 
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_regularize100_lcode.yml --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model/checkpoint300000.ckpt 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_regularize100_lcode.yml  --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model/checkpoint300000.ckpt
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_regularize100_lcode.yml  --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512/checkpoint300000.ckpt
+
+
+
+
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512  /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/ji/ji_lcode_fixed_bg_paper_model_512_backup;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_backup;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/dave_dvp_lcode_fixed_bg_512_paper_model_backup;
+
+
+### No expr
+
+
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_expr.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_expr.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_expr.yml 
+
+
+### No BG
+
+
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_bg.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_bg.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_bg.yml 
+
+
+
+## No Lcode
+
+
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_no_lcode.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_lcode.yml --load-checkpoint /rdata/guygafni/projects/cnerf/nerf-pytorch/logs/dvp/andrei_2_dvp_lcode_fixed_bg_512_paper_model_no_lcode/checkpoint325000.ckpt
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_no_lcode.yml 
+
+
+## NeRF
+
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_nerf.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_nerf.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_nerf.yml 
+
+
+# Half 
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_half_data.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_half_data.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_half_data.yml 
+
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_half_data
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/test /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_quarter_data
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/transforms_test.json /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_half_data/
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/transforms_test.json /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_quarter_data/
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/bg /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_half_data/;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/bg /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp_quarter_data/;
+
+
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_half_data;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/test /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_quarter_data;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/transforms_test.json /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_half_data/;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/transforms_test.json /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_quarter_data/;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/bg /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_quarter_data/;
+cp -r /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/bg /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp_half_data/;
+
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_half_data;
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/test /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_quarter_data;
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/transforms_test.json /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_half_data/;
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/transforms_test.json /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_quarter_data/;
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/transforms_test.json /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_half_data/;
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/bg /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_quarter_data/;
+cp -r /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/bg /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp_half_data/;
+
+
+
+# Quarter 
+python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_quarter_data.yml 
+python train_transformed_rays.py --config ./config/andrei_2/andrei_2_dvp_lcode_fixed_bg_512_paper_model_quarter_data.yml 
+python train_transformed_rays.py --config ./config/ji/ji_lcode_fixed_bg_paper_model_512_quarter_data.yml 
+
+
+
+# FOMM
+cp /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji/images/00000.png ./test_data/ji.png
+cp /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave/images/00000.png ./test_data/dave.png
+cp /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_2/images/00000.png ./test_data/andrei.png
+cp /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/dave_dvp/dave_dvp_test.mp4 test_data/
+cp /rhome/guygafni/projects/cnerf/nerf-pytorch/real_data/andrei_dvp/andrei_dvp_test.mp4 test_data/
+cp /rdata/guygafni/projects/cnerf/nerf-pytorch/real_data/ji_dvp/ji_dvp_test.mp4 test_data/
+
+
+#####################
+Metrics
+#####################
+
+python demo.py  --config config/vox-adv-256.yaml --driving_video test_data/ji_dvp_test.mp4 --source_image test_data/ji.png --checkpoint vox-adv-cpk.pth.tar --adapt_scale
+python demo.py  --config config/vox-adv-256.yaml --driving_video test_data/andrei_dvp_test.mp4 --source_image test_data/andrei.png --checkpoint vox-adv-cpk.pth.tar --adapt_scale; mv png andrei; 
+python demo.py  --config config/vox-adv-256.yaml --driving_video test_data/dave_dvp_test.mp4 --source_image test_data/dave.png --checkpoint vox-adv-cpk.pth.tar --adapt_scale; 
+
+python run.py --config config/vox-adv-256.yaml --mode animate  --driving_video test_data/dave_dvp_test.mp4 --source_image test_data/ji.png --checkpoint path/to/checkpoint

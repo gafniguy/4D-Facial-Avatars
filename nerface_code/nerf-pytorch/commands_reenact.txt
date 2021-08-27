@@ -1,0 +1,40 @@
+commands andrei re-enact
+
+
+#hwf[2] = np.array([-1481.96352, 1559.67488, 0.565694, 0.413902])  ### TODO correct pose for reenactment
+pose_copy = torch.clone(pose)
+#pose_copy[:,-1] *= 1.5
+pose_copy[1,-1] *= 1.3### TODO correct pose for reenactment
+# pose[2,3]=0.7
+# pose = torch.from_numpy(np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]))
+if use_latent_code:
+    if idx_map[i, 1] >= 0:
+        # print("found latent code for this image")
+        index_of_image_after_train_shuffle = idx_map[i, 1]
+index_of_image_after_train_shuffle = 10  ## TODO Fixes latent code
+index_of_image_after_train_shuffle = idx_map[84, 1]  ## TODO Fixes latent code v2 for andrei
+# index_of_image_after_train_shuffle = idx_map[10,1] ## TODO Fixes latent code
+latent_code = latent_codes[index_of_image_after_train_shuffle].to(device) if use_latent_code else None
+latent_code = latent_codes[200].to(device) if use_latent_code else None
+# latent_code = torch.mean(latent_codes)
+ray_origins, ray_directions = get_ray_bundle(hwf[0], hwf[1], hwf[2], pose_copy)
+rgb_coarse, disp_coarse, _, rgb_fine, disp_fine, _, weights = run_one_iter_of_nerf(
+    hwf[0],
+    hwf[1],
+    hwf[2],
+    model_coarse,
+    model_fine,
+    ray_origins,
+    ray_directions,
+    cfg,
+    mode="validation",
+    encode_position_fn=encode_position_fn,
+    encode_direction_fn=encode_direction_fn,
+    expressions=render_expressions[325],
+    background_prior=background.view(-1, 3) if (background is not None) else None,
+    # background_prior = torch.ones_like(background).view(-1,3),  # White background
+    latent_code=latent_code
+)
+
+plt.imshow(rgb_fine.cpu().numpy())
+plt.show()
