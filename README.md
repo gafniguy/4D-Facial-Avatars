@@ -25,9 +25,11 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 }
 ```
 
-**Dataset and License**
+**Code, Dataset and License**
 
-UPDATE: Dataset sample <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">available</a>.
+Dataset sample <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">available</a>.
+
+The nerf code is heavily based on <a  href="https://github.com/krrish94/nerf-pytorch">this repo by Krishna Murthy</a>. Thank you!
 
 If you want access to our video sequences to run your methods on, don't hesitate to contact us [guy.gafni at tum.de]
 
