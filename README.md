@@ -25,13 +25,13 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 }
 ```
 
-**Code, Dataset and License**
+**Dataset and License**
 
 Dataset sample <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">available</a>.
 
-The nerf code is heavily based on <a  href="https://github.com/krrish94/nerf-pytorch">this repo by Krishna Murthy</a>. Thank you!
 
-** Code Structure **
+**Code Structure**
+The nerf code is heavily based on <a  href="https://github.com/krrish94/nerf-pytorch">this repo by Krishna Murthy</a>. Thank you!
 
 Installation etc:
 Originally the project used torch 1.7.1, but this should also run with torch 1.9.0 (cuda 11).
@@ -44,8 +44,11 @@ These two are interchangeable:
 
 The main training and testing scripts are `train_transformed_rays.py` and `eval_transformed_rays.py`, respectively.
 The training script expects a path to a config file, e.g.:
+
 `python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model.yml`
+
 The eval script will also take a path to a model checkpoint and a folder to save the rendered images:
+
 `python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_teaser.yml --checkpoint /path/to/checkpoint/checkpoint400000.ckpt --savedir ./renders/dave_rendered_frames`
 
 The config file must refer to a dataset to use in `dataset.basedir`. An example dataset has been provided above (see <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">sample</a>). 
