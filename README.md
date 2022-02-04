@@ -43,22 +43,23 @@ These two are interchangeable:
     inds = torch.searchsorted(cdf.detach(), u, right=True)  # native to pytorch 
 ```
 
-The main training and testing scripts are `train_transformed_rays.py` and `eval_transformed_rays.py`, respectively.
+The main training and testing scripts are `train_transformed_rays.py` and `eval_transformed_rays.py`, respectively. They are in the main working folder which is in `nerface_code/nerf-pytorch/` 
+
 The training script expects a path to a config file, e.g.:
 
-`python train_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model.yml`
+`python train_transformed_rays.py --config  --config ./path_to_data/person_1/person_1_config.yml `
 
 The eval script will also take a path to a model checkpoint and a folder to save the rendered images:
 
-`python eval_transformed_rays.py --config ./config/dave/dave_dvp_lcode_fixed_bg_512_paper_model_teaser.yml --checkpoint /path/to/checkpoint/checkpoint400000.ckpt --savedir ./renders/dave_rendered_frames`
+`python eval_transformed_rays.py --config ./path_to_data/person_1/person_1_config.yml --checkpoint /path/to/checkpoint/checkpoint400000.ckpt --savedir ./renders/person_1_rendered_frames`
 
-The config file must refer to a dataset to use in `dataset.basedir`. An example dataset has been provided above (see <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">sample</a>). 
+The config file must refer to a dataset to use in `dataset.basedir`. Download the dataset from the .zip shared above, and place it in the nerf-pytorch directory. 
 
 If you have your own video sequence including per frame tracking, you can see how I create the json's for training in the `real_to_nerf.py` file (main function). This does not include the code for tracking, which unfortunately I cannot publish. 
 
 
-If you want access to our video sequences to run your methods on, don't hesitate to contact us [guy.gafni at tum.de]
+Don't hesitate to contact [guy.gafni at tum.de] for additional questions, or open an issue here.
 
-The material in this repository is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+The material in this repository is licensed under an Attribution-NonCommercial-ShareAlike 4.0 International license. 
 
 Code for the webpage is borrowed from the <a href="https://github.com/daveredrum/ScanRefer">ScanRefer project</a>.
