@@ -27,7 +27,8 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 
 **Dataset and License**
 
-Dataset sample <a  href="https://github.com/gafniguy/4D-Facial-Avatars/issues/2">available</a>.
+Dataset sample <a  href="https://syncandshare.lrz.de/getlink/fiBTHis1fS8Zxqd55XCAjjG8/nerface_dataset.zip">available</a>.
+Please do not use it for commercial use and respect the license attached within the zip file. If you make use of this dataset or code, please cite our paper. 
 
 
 **Code Structure**
