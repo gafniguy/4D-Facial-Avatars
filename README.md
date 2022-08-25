@@ -28,11 +28,13 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 **Dataset and License**
 
 Dataset is <a  href="https://syncandshare.lrz.de/getlink/fiBTHis1fS8Zxqd55XCAjjG8/nerface_dataset.zip">available</a>.
-Please do not use it for commercial use and respect the license attached within the zip file. If you make use of this dataset or code, please cite our paper. 
+Please do not use it for commercial use and respect the license attached within the zip file. (The material in this repository is licensed under an Attribution-NonCommercial-ShareAlike 4.0 International license). 
 
+If you make use of this dataset or code, please cite our paper. 
+MIT License applies for the code.
 
 **Code Structure**
-The nerf code is heavily based on <a  href="https://github.com/krrish94/nerf-pytorch">this repo by Krishna Murthy</a>. Thank you!
+The nerf code is heavily based on <a  href="https://github.com/krrish94/nerf-pytorch">this repo by Krishna Murthy</a>. Thank you! 
 
 Installation etc:
 Originally the project used torch 1.7.1, but this should also run with torch 1.9.0 (cuda 11).
@@ -60,6 +62,5 @@ If you have your own video sequence including per frame tracking, you can see ho
 
 Don't hesitate to contact [guy.gafni at tum.de] for additional questions, or open an issue here.
 
-The material in this repository is licensed under an Attribution-NonCommercial-ShareAlike 4.0 International license. 
 
 Code for the webpage is borrowed from the <a href="https://github.com/daveredrum/ScanRefer">ScanRefer project</a>.
