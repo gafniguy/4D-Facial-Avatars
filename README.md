@@ -49,7 +49,7 @@ The main training and testing scripts are `train_transformed_rays.py` and `eval_
 
 The training script expects a path to a config file, e.g.:
 
-`python train_transformed_rays.py --config  --config ./path_to_data/person_1/person_1_config.yml `
+`python train_transformed_rays.py --config ./path_to_data/person_1/person_1_config.yml `
 
 The eval script will also take a path to a model checkpoint and a folder to save the rendered images:
 
