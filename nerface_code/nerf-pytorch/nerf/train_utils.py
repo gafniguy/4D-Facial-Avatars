@@ -179,9 +179,7 @@ def run_one_iter_of_nerf(
     latent_code = None,
     ray_directions_ablation = None
 ):
-    is_rad = False
-    if ray_directions_ablation:
-        is_rad = True
+    is_rad = torch.is_tensor(ray_directions_ablation)
     viewdirs = None
     if options.nerf.use_viewdirs:
         # Provide ray directions as input
