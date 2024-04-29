@@ -27,7 +27,7 @@ Project Page & Video: <a href="https://gafniguy.github.io/4D-Facial-Avatars/">ht
 
 **Dataset and License**
 
-Dataset is available for download [here](https://syncandshare.lrz.de/getlink/fiFbKE8dEDWYENSr75L9WG/nerface_dataset.zip). Please do not use it for commercial use and respect the license attached within the zip file. (The material in this repository is licensed under an Attribution-NonCommercial-ShareAlike 4.0 International license). 
+Dataset is available for download [here](https://kaldir.vc.in.tum.de/nerface/nerface_dataset.zip) or from [here](https://syncandshare.lrz.de/getlink/fiFbKE8dEDWYENSr75L9WG/nerface_dataset.zip). Please do not use it for commercial use and respect the license attached within the zip file. (The material in this repository is licensed under an Attribution-NonCommercial-ShareAlike 4.0 International license). 
 
 If you make use of this dataset or code, please cite our paper. 
 MIT License applies for the code.
