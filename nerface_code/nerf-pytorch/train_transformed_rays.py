@@ -21,6 +21,10 @@ from nerf import (CfgNode, get_embedding_function, get_ray_bundle, img2mse,
                   mse2psnr, run_one_iter_of_nerf, dump_rays, GaussianSmoothing)
 #from gpu_profile import gpu_profile
 
+
+def git_check():
+    print("Git check")
+
 def main():
 
     parser = argparse.ArgumentParser()
