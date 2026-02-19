@@ -21,6 +21,10 @@ from nerf import (CfgNode, get_embedding_function, get_ray_bundle, img2mse,
                   mse2psnr, run_one_iter_of_nerf, dump_rays, GaussianSmoothing)
 #from gpu_profile import gpu_profile
 
+
+def git_check():
+    print("Git check")
+
 def main():
 
     parser = argparse.ArgumentParser()
@@ -59,17 +63,37 @@ def main():
         # Load dataset
         images, poses, render_poses, hwf, expressions = None, None, None, None, None
         if cfg.dataset.type.lower() == "blender":
-            images, poses, render_poses, hwf, i_split, expressions, _, bboxs = load_flame_data(
-                cfg.dataset.basedir,
-                half_res=cfg.dataset.half_res,
-                testskip=cfg.dataset.testskip,
+            from torch.utils.data import DataLoader
+            from torch.utils.data import Dataset
+            from nerf import nerface_dataloader
+            training_data = nerface_dataloader.NerfaceDataset(
+                mode='train',
+                cfg=cfg,
+                N_max=100
             )
-            i_train, i_val, i_test = i_split
-            H, W, focal = hwf
-            H, W = int(H), int(W)
-            hwf = [H, W, focal]
-            if cfg.nerf.train.white_background:
-                images = images[..., :3] * images[..., -1:] + (1.0 - images[..., -1:])
+
+            validation_data = nerface_dataloader.NerfaceDataset(
+                mode='val',
+                cfg=cfg,
+                N_max=1
+
+            )
+
+            H = training_data.H
+            W = training_data.W
+            #img, pose, [H, W, focal], expression, probs = training_data[50]
+            #train_dataloader = DataLoader(training_data, batch_size=1, shuffle=True)
+
+
+            # images, poses, render_poses, hwf, i_split, expressions, _, bboxs = load_flame_data(
+            #     cfg.dataset.basedir,
+            #     half_res=cfg.dataset.half_res,
+            #     testskip=cfg.dataset.testskip,
+            # )
+            # i_train, i_val, i_test = i_split
+            # H, W, focal = hwf
+            # H, W = int(H), int(W)
+            # hwf = [H, W, focal]
     print("done loading data")
     # Seed experiment for repeatability
     seed = cfg.experiment.randomseed
@@ -140,7 +164,7 @@ def main():
     supervised_train_background = train_background and supervised_train_background
     # Avg background
     #images[i_train]
-    if train_background:
+    if train_background: # TODO doesnt support dataloader!
         with torch.no_grad():
             avg_img = torch.mean(images[i_train],axis=0)
             # Blur Background:
@@ -162,10 +186,11 @@ def main():
         background = Image.open(os.path.join(cfg.dataset.basedir,'bg','00050.png'))
         background.thumbnail((H,W))
         background = torch.from_numpy(np.array(background).astype(np.float32)).to(device)
+        background=background[:,:,:3]
         background = background/255
         print("bg shape", background.shape)
-        print("should be ", images[i_train][0].shape)
-        assert background.shape == images[i_train][0].shape
+        #print("should be ", training_data[0].shape)
+        #assert background.shape[:2] == [training_data.H,training_data.W]
     else:
         background = None
 
@@ -179,7 +204,7 @@ def main():
         print("background.is_leaf " ,background.is_leaf, background.device)
 
     if train_latent_codes:
-        latent_codes = torch.zeros(len(i_train),32, device=device)
+        latent_codes = torch.zeros(len(training_data),32, device=device)
         print("initialized latent codes with shape %d X %d" % (latent_codes.shape[0], latent_codes.shape[1]))
         if not disable_latent_codes:
             trainable_parameters.append(latent_codes)
@@ -227,16 +252,16 @@ def main():
     # # TODO: Prepare raybatch tensor if batching random rays
 
     # Prepare importance sampling maps
-    ray_importance_sampling_maps = []
-    p = 0.9
-    print("computing boundix boxes probability maps")
-    for i in i_train:
-        bbox = bboxs[i]
-        probs = np.zeros((H,W))
-        probs.fill(1-p)
-        probs[bbox[0]:bbox[1],bbox[2]:bbox[3]] = p
-        probs = (1/probs.sum()) * probs
-        ray_importance_sampling_maps.append(probs.reshape(-1))
+    # ray_importance_sampling_maps = []
+    # p = 0.9
+    # print("computing bounding boxes probability maps")
+    # for i in i_train:
+    #     bbox = bboxs[i]
+    #     probs = np.zeros((H,W))
+    #     probs.fill(1-p)
+    #     probs[bbox[0]:bbox[1],bbox[2]:bbox[3]] = p
+    #     probs = (1/probs.sum()) * probs
+    #     ray_importance_sampling_maps.append(probs.reshape(-1))
 
 
     print("Starting loop")
@@ -286,11 +311,17 @@ def main():
                 expressions=expressions
             )
         else:
-            img_idx = np.random.choice(i_train)
-            img_target = images[img_idx].to(device)
-            pose_target = poses[img_idx, :3, :4].to(device)
+
+            img_idx = np.random.choice(len(training_data))
+            img, pose, [H, W, focal], expression, probs = training_data[img_idx]
+
+            img_target = img.to(device)
+            pose_target = pose[:3, :4].to(device)
+
+
+
             if not disable_expressions:
-                expression_target = expressions[img_idx].to(device) # vector
+                expression_target = expression.to(device) # vector
             else: # zero expr
                 expression_target = torch.zeros(76, device=device)
             #bbox = bboxs[img_idx]
@@ -318,7 +349,7 @@ def main():
 
             # Use importance sampling to sample mainly in the bbox with prob p
             select_inds = np.random.choice(
-                coords.shape[0], size=(cfg.nerf.train.num_random_rays), replace=False, p=ray_importance_sampling_maps[img_idx]
+                coords.shape[0], size=(cfg.nerf.train.num_random_rays), replace=False, p=probs
             )
 
             select_inds = coords[select_inds]
@@ -460,8 +491,15 @@ def main():
                 else:
                     # Do all validation set...
                     loss = 0
-                    for img_idx in i_val[:2]:
-                        img_target = images[img_idx].to(device)
+                    for img_idx in range(len(validation_data)):
+                        #img_target = images[img_idx].to(device)
+
+                        #img_idx = np.random.choice(len(validation_data))
+                        img, pose, [H, W, focal], expression, _ = training_data[img_idx]
+
+                        img_target = img.to(device)
+                        pose_target = pose[:3, :4].to(device)
+
                         #tqdm.set_description('val im %d' % img_idx)
                         #tqdm.refresh()  # to show immediately the update
 
@@ -481,7 +519,7 @@ def main():
                         # im.save('val_im_target_debug.png')
                         # ### DEBUG #### END
 
-                        pose_target = poses[img_idx, :3, :4].to(device)
+                        #pose_target = poses[img_idx, :3, :4].to(device)
                         ray_origins, ray_directions = get_ray_bundle(
                             H, W, focal, pose_target
                         )
@@ -513,7 +551,7 @@ def main():
                             curr_loss = coarse_loss
                         loss += curr_loss + curr_fine_loss
 
-                loss /= len(i_val)
+                loss /= len(validation_data)
                 psnr = mse2psnr(loss.item())
                 writer.add_scalar("validation/loss", loss.item(), i)
                 writer.add_scalar("validation/coarse_loss", coarse_loss.item(), i)
